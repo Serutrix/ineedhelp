@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class flyfuck : MonoBehaviour
 {
+    public Gamemanager Gamemanager;
     public float meow = 1;
     private Rigidbody2D rb;
 
@@ -13,6 +14,7 @@ public class flyfuck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pointi.score = 0;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -23,5 +25,11 @@ public class flyfuck : MonoBehaviour
         {
             rb.velocity = Vector2.up * meow;
         }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Gamemanager.GameOver();
     }
 }
